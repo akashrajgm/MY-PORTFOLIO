@@ -1,0 +1,648 @@
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif; /* Applied Montserrat here */
+  background: linear-gradient(135deg, #000000, #1c1c1e, #2d0d3a);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  color: #fff;
+  overflow-x: hidden;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+header.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(28, 28, 30, 0.8), rgba(45, 13, 58, 0.8));
+  background-size: 300% 300%;
+  animation: navbarGradientMove 12s ease infinite;
+  backdrop-filter: blur(6px);
+  z-index: 999;
+}
+@keyframes navbarGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #00f6ff, #ff00cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.4s ease;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #00f6ff, #ff00cc);
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+  width: 120%;
+}
+
+.nav-link:hover {
+  color: #00f6ff;
+  transform: scale(1.15);
+  text-shadow: 0 0 10px #00f6ff;
+}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.3s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+}
+
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-text {
+  font-size: 12rem;
+  font-weight: 900;
+  color: #00f6ff;
+  animation: fadeOut 2.5s ease-in forwards;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+@keyframes fadeOut {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.background-text {
+  position: absolute;
+  font-size: 14rem;
+  font-weight: 800;
+  opacity: 0.04;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.hero-content {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out 2.5s forwards;
+  z-index: 1;
+  /* Adjusted to bring content down */
+  margin-top: -10rem; /* Slightly lower than before */
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-avatar {
+  width: 150px; /* Adjust size as needed */
+  height: 150px; /* Should be same as width for a perfect circle */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  margin-bottom: 1.5rem; /* Space below the avatar */
+  border: 4px solid #00f6ff; /* Original blue border */
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.4), /* Outer glow */
+              0 0 10px rgba(255, 0, 204, 0.6); /* Inner glow */
+  animation: fadeInAvatar 1.5s ease-out 2.8s forwards; /* Delay slightly after other content */
+  opacity: 0; /* Start hidden for animation */
+}
+
+@keyframes fadeInAvatar {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: Add a subtle hover effect */
+.hero-avatar:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.hero-content h1 {
+  font-size: 4rem; /* Restored original size */
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #00f6ff, #ff00cc, #00f6ff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 4s linear infinite;
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.hero-content p:first-of-type { /* Target only the "Full Stack Developer" paragraph */
+  font-size: 1.8rem; /* Restored original size */
+  color: #ccc;
+  text-shadow: 0 0 5px #00f6ff;
+}
+
+/* New style for the longer description - corrected font-size */
+.hero-description {
+   font-size: 1.2rem; /* Adjusted to 1.2rem */
+   color: #bbb;
+   line-height: 1.5;
+   margin-top: 1rem;
+   max-width: 600px;
+   margin-left: auto;
+   margin-right: auto;
+   text-shadow: 0 0 2px rgba(0, 246, 255, 0.1);
+}
+
+
+.section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  animation: sectionFade 1s ease-in;
+}
+
+@keyframes sectionFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(to right, #00f6ff, #ff00cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
+}
+
+.skills-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-item img {
+  height: 70px;
+  width: auto;
+  filter: grayscale(100%) brightness(0.7);
+  /* Keep existing transitions for filter and transform */
+  transition: all 0.4s ease-in-out;
+  /* Add initial transparent box-shadow for smooth transition */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  /* Hint to browser for performance */
+  will-change: filter, transform, box-shadow;
+}
+
+.skill-item img:hover {
+  filter: grayscale(0%) brightness(1.1); /* Original color */
+  transform: scale(1.2); /* Slight scale */
+  /* Add glowing gradient-like box-shadow */
+  box-shadow: 0 0 15px 5px rgba(0, 246, 255, 0.4), /* Blue glow */
+              0 0 15px 5px rgba(255, 0, 204, 0.4); /* Pink glow */
+  /* Apply the animation for pulsating glow */
+  animation: skillGlow 1.5s infinite alternate ease-in-out;
+}
+
+/* New Keyframes for the skill glow animation */
+@keyframes skillGlow {
+  0% {
+    box-shadow: 0 0 8px 1px rgba(0, 246, 255, 0.4), /* Smaller, less intense glow */
+                0 0 8px 1px rgba(255, 0, 204, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 20px 6px rgba(0, 246, 255, 0.7), /* Larger, more intense glow */
+                0 0 20px 6px rgba(255, 0, 204, 0.7);
+  }
+}
+
+
+.social-links {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  font-size: 2.5rem;
+  margin: 0 1rem;
+  color: #fff;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  text-shadow: 0 0 10px #00f6ff;
+  transform: scale(1.2);
+}
+
+/* Flip Card Section (combined for education and experience) */
+.combined-flip-cards-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 4rem auto;
+  text-align: center;
+  background: transparent; /* Transparent background as requested */
+  border-radius: 15px;
+  box-shadow: none; /* No box shadow as requested */
+}
+
+.flip-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 400px;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 15px;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1.5rem;
+  text-align: left;
+  overflow-y: auto;
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, #0A0A1A, #1A0D28);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 246, 255, 0.1);
+}
+
+.flip-card-front h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 8px rgba(0, 246, 255, 0.5);
+  background: linear-gradient(to right, #00f6ff, #ff00cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flip-card-front p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #10081A, #05020D);
+  color: white;
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 246, 255, 0.2);
+}
+
+.flip-card-back h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #00f6ff; /* Changed to accent color for better visibility */
+    text-shadow: 0 0 5px rgba(0, 246, 255, 0.5);
+}
+
+.flip-card-back p {
+    color: #eee;
+    margin-bottom: 0.5rem;
+}
+.flip-card-back ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+.flip-card-back ul li {
+    margin-bottom: 0.3rem;
+    position: relative;
+    padding-left: 15px;
+    color: #ccc; /* Slightly lighter color for list items */
+}
+.flip-card-back ul li::before {
+    content: "•";
+    color: #ff00cc; /* Changed to a vibrant accent color for bullets */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+/* Project Item Container - for the whole project box (media + content) */
+.project-item-container {
+   max-width: 500px; /* Max width for the entire project card */
+   text-align: center;
+   background: linear-gradient(135deg, #0A0A1A, #1A0D28); /* Dark background for the card */
+   box-shadow: 0 8px 25px rgba(0, 246, 255, 0.15);
+   padding-bottom: 1.5rem; /* Add padding at bottom for content */
+   overflow: hidden; /* Ensures border-radius applies nicely */
+   border-radius: 15px; /* Added back for the overall container's rounded corners */
+}
+
+/* Wrapper for the flipping media (image and video) */
+.project-media-wrapper {
+   position: relative;
+   width: 100%;
+   padding-top: 56.25%; /* 16:9 Aspect Ratio (height / width * 100%) for video */
+   perspective: 1000px; /* Crucial for 3D effect on children */
+   transform-style: preserve-3d; /* Enable 3D transformations */
+   transition: transform 0.6s ease-in-out; /* Optimized transition for smoothness */
+   will-change: transform; /* Hint for browser optimization */
+   cursor: pointer; /* Indicate it's clickable */
+   overflow: hidden; /* Crucial to hide the backface of the non-visible element */
+   display: flex; /* Used to center the image/iframe within */
+   justify-content: center;
+   align-items: center;
+}
+
+/* Common styles for the image and video - positioned absolutely inside wrapper */
+.project-thumb-img, .project-video-element {
+   position: absolute; /* Absolute positioning within the flex container */
+   /* Apply image sizing to video as well */
+   width: 100%; /* Default, will be constrained by max-width */
+   height: 100%; /* Default, will be constrained by max-height */
+   max-width: 90%; /* Match image's max-width */
+   max-height: 90%; /* Match image's max-height */
+   object-fit: contain; /* Match image's object-fit */
+
+   border: none;
+   backface-visibility: hidden;
+   transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, box-shadow 0.3s ease; /* Optimized transition for smoothness */
+   will-change: transform, opacity; /* Hint for browser optimization */
+   top: 50%; /* Center vertically */
+   left: 50%; /* Center horizontally */
+   transform: translate(-50%, -50%); /* For centering */
+}
+
+/* Image on the front side */
+.project-thumb-img {
+   filter: grayscale(100%) brightness(0.7);
+   transform: translate(-50%, -50%) rotateY(0deg); /* Centered and facing front */
+   opacity: 1;
+}
+
+/* Image hover effect */
+.project-thumb-img:hover {
+   filter: grayscale(0%) brightness(1.1);
+   transform: translate(-50%, -50%) scale(1.02) rotateY(0deg); /* Slight scale on hover */
+   box-shadow: 0 0 20px rgba(0, 246, 255, 0.6); /* Soft glow shadow */
+}
+
+/* Video on the back side */
+.project-video-element {
+   transform: translate(-50%, -50%) rotateY(180deg); /* Centered, initially rotated to back */
+   opacity: 0;
+}
+
+/* State when .project-media-wrapper is 'flipped' */
+.project-media-wrapper.flipped .project-thumb-img {
+   transform: translate(-50%, -50%) rotateY(-180deg); /* Rotate image out of view */
+   opacity: 0;
+}
+
+.project-media-wrapper.flipped .project-video-element {
+   transform: translate(-50%, -50%) rotateY(0deg); /* Rotate video into view */
+   opacity: 1;
+}
+
+/* Styling for the content area (title and description) */
+.project-content-area {
+   padding: 0 1.5rem; /* Padding for title and description */
+   margin-top: 1.5rem; /* Space between media and title */
+}
+
+.project-title {
+   font-size: 1.6rem;
+   background: linear-gradient(to right, #f953c6, #b91d73);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   text-shadow: 0 0 8px rgba(255, 0, 204, 0.4);
+   margin-top: 0; /* Reset margin from previous rule */
+}
+
+.project-description {
+   font-size: 1rem;
+   color: #ccc;
+   line-height: 1.6;
+   margin-top: 0.8rem;
+   padding-bottom: 1rem; /* Ensure some space at the bottom */
+}
+
+/* "Click to see output" label */
+.click-to-demo-label {
+   font-size: 0.9rem;
+   color: #00f6ff;
+   margin-top: 0.5rem;
+   text-shadow: 0 0 5px rgba(0, 246, 255, 0.3);
+   opacity: 1;
+   transition: opacity 0.3s ease;
+}
+
+.project-media-wrapper.flipped + .click-to-demo-label {
+   opacity: 0; /* Hide label when video is active */
+}
+
+/* NEW/UPDATED CSS for Project GitHub Link */
+.project-github-link {
+    display: inline-block; /* Allows margin top/bottom and maintains alignment */
+    margin-top: 1rem; /* Space above the link */
+    font-size: 2.2rem; /* Made it bigger */
+    text-decoration: none; /* Remove underline */
+    position: relative; /* For the gradient text */
+    background: linear-gradient(90deg, #00f6ff, #ff00cc, #00f6ff); /* Gradient background */
+    background-size: 200% auto; /* For animation */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 4s linear infinite; /* Reuse gradient text animation */
+    transition: transform 0.3s ease; /* For hover scale */
+    text-shadow: 0 0 10px rgba(0, 246, 255, 0.5); /* Initial glow */
+}
+
+.project-github-link:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    text-shadow: 0 0 20px #00f6ff; /* More prominent glow on hover */
+}
+
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  /* Adjust font size for the "Full Stack Developer" paragraph on smaller screens */
+  .hero-content p:first-of-type {
+    font-size: 1.2rem;
+  }
+  /* Adjust font size for the hero description on smaller screens if needed */
+  .hero-description {
+    font-size: 1rem; /* Example: slightly larger than desktop tiny, but still small */
+  }
+  .portfolio-text {
+    font-size: 6rem;
+  }
+  .background-text {
+    font-size: 8rem;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1rem;
+  }
+  .nav-links {
+      gap: 1rem;
+  }
+  .skills-logos img {
+    height: 50px;
+  }
+  .flip-card {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    min-height: 200px;
+  }
+  .flip-card-front, .flip-card-back {
+      padding: 1rem;
+  }
+  .flip-card-front h3 {
+      font-size: 1.5rem;
+  }
+  .flip-card-back h4 {
+      font-size: 1.1rem;
+  }
+  .flip-card-back p, .flip-card-back ul li {
+      font-size: 0.85rem;
+  }
+  .combined-flip-cards-section {
+      padding: 2.5rem 1rem;
+  }
+  .project-item-container {
+    width: 100%;
+    max-width: 350px; /* Adjust max-width for mobile */
+  }
+  .hero-avatar {
+    width: 120px; /* Smaller size on mobile */
+    height: 120px;
+    margin-bottom: 1rem;
+    border-width: 3px; /* Adjust border width for smaller screens */
+  }
+  .project-github-link { /* Adjust for mobile if needed */
+    font-size: 1.8rem;
+  }
+}
